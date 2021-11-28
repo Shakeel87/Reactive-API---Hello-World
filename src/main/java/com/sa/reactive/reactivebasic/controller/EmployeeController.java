@@ -13,13 +13,13 @@ import java.time.Duration;
 
 
 @RestController
-@RequestMapping("employees")
+@RequestMapping("/api/v1")
 public class EmployeeController {
     @Autowired
     EmployeeRepository employeeRepository;
 
 
-    @PostMapping("/create")
+    @PostMapping("/employees/create")
     @ResponseStatus(value = HttpStatus.CREATED)
     public Mono<ResponseEntity> addEmployee( @RequestBody Employee employee) {
         Mono<Employee> employeeMono = employeeRepository.save(employee);
@@ -29,15 +29,15 @@ public class EmployeeController {
                         .body(value));
     }
 
-    @GetMapping()
+    @GetMapping("/employees")
     public Flux<Employee> getAllEmployees() {
-        return employeeRepository.findAll()
-                         .delayElements(Duration.ofMillis(200));
+        return employeeRepository.findAll();
+
     }
 
-    @GetMapping("/{lastName}")
+    @GetMapping("/employees/{lastName}")
     public Flux<Employee>
-    getCatalogueItemBySKU(@PathVariable(value = "lastName") String lastName) {
+    getEmployeeByLastName(@PathVariable(value = "lastName") String lastName) {
 
         return employeeRepository.findEmployeeByLastName(lastName);
     }

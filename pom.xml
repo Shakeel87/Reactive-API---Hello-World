@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.sa.reactive</groupId>
 	<artifactId>reactivebasic</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>reactivebasic</name>
 	<description>Demo project for Spring Boot reactive</description>
 	<properties>
@@ -35,6 +35,12 @@
 			<groupId>io.r2dbc</groupId>
 			<artifactId>r2dbc-h2</artifactId>
 			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>1.18.22</version>
+				<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
